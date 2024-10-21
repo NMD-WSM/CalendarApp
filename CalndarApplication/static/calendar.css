@@ -1,0 +1,215 @@
+
+
+.highlighted {
+  background-color: #a3ff89; /* 蓝色背景 */
+  color: #00008b; /* 深蓝色文字 */
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* 在小屏幕上换行 */
+    justify-content: center; /* 居中对齐 */
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.calendar-container,
+.events-container {
+    flex: 1 1 300px; /* 设置初始宽度，但在小屏幕上允许收缩 */
+    padding: 20px;
+}
+
+.calendar-container {
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; /* 在小屏幕上添加底部边框 */
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #4CAF50; /* 更加明亮的绿色 */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3e8e41; /* 深一点的绿色 */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #4CAF50; /* 与按钮颜色相匹配 */
+    color: white;
+    font-weight: bold;
+}
+
+table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+#selectedDate {
+    background-color: #327a10; /* 橙色 */
+    color: white;
+    font-weight: bold;
+    border: 1px solid #ccc; /* 添加边框 */
+    text-align: center; /* 文本居中 */
+    word-wrap: break-word; /* 允许单词换行 */
+    white-space: normal; /* 允许自然换行 */
+    padding: 5px; /* 内边距 */
+}
+
+#displayedEvents {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    list-style: none;
+}
+
+#displayedEvents li {
+    position: relative;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    background-color: #f5f5f5; /* 浅灰色 */
+    border: 1px solid #eaeaea;
+}
+
+#displayedEvents li:hover {
+    background-color: #e0e0e0; /* 深一点的灰色 */
+    border-color: #c0c0c0;
+}
+
+#displayedEvents li:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    background-color: #4CAF50; /* 绿色 */
+    border-radius: 50%;
+}
+
+#displayedEvents p {
+    margin: 0;
+    font-size: 1em;
+}
+
+#displayedEvents .event-time {
+    font-weight: bold;
+    color: #4CAF50; /* 绿色 */
+}
+
+#displayedEvents .event-desc {
+    margin-top: 5px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* 为列表项添加过渡效果 */
+#displayedEvents li {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#calendarTable tbody td:hover {
+    background-color: #2e6421; /* 橙色 */
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+    .calendar-container,
+    .events-container {
+        flex: 1 1 100%; /* 占满整个宽度 */
+        border-bottom: 1px solid #ddd; /* 移动设备上的底部边框 */
+    }
+
+    .calendar-container {
+        border-right: none; /* 移除右侧边框 */
+    }
+}
+
+#fileInput {
+    display: none;
+}
+
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
